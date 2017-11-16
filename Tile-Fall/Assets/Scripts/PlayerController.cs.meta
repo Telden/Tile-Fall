@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b57d04b6539b6ba47a44541dd7a056fc
+timeCreated: 1486329581
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - gridController: {instanceID: 0}
+  - player1: {fileID: 1629392132649142, guid: b1dd2cf691deac14bbaa9ecd54ca8783, type: 2}
+  - player2: {fileID: 1527807924725976, guid: e198ba11a40d9b84a89ca06e7ebc252e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
