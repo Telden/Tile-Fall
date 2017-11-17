@@ -47,30 +47,30 @@ public class Player2Script : MonoBehaviour
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y + 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
-                    Debug.Log("PLayer 2 Moved");
+                    //Debug.Log("PLayer 2 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.DownArrow) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y - 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
-                    Debug.Log("PLayer 2 Moved");
+                    //Debug.Log("PLayer 2 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.LeftArrow) && Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x - 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
-                    Debug.Log("PLayer 2 Moved");
+                    //Debug.Log("PLayer 2 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x + 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
-                    Debug.Log("PLayer 2 Moved");
+                    //Debug.Log("PLayer 2 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.Keypad0))
                 {
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
-                    Debug.Log("PLayer 2 Moved");
+                    //Debug.Log("PLayer 2 Moved");
                 }
             }
             if (Input.GetKeyDown(KeyCode.Backspace))
@@ -88,17 +88,17 @@ public class Player2Script : MonoBehaviour
     }
     void createTarget()
     {
-        Debug.Log("Creating Target");
+        //Debug.Log("Creating Target");
         if (!turnController.GetComponent<TurnController>().target2Spawned)
         {
-            Debug.Log("Instantiating target");
+            //Debug.Log("Instantiating target");
             Instantiate(player2_target, player2_sprite.transform.position, Quaternion.identity);
             target_holder = GameObject.Find("Player1_Target(Clone)");
             turnController.GetComponent<TurnController>().target2Spawned = true;
         }
         else
         {
-            Debug.Log("Setting to true");
+            //Debug.Log("Setting to true");
             GameObject.Find("Player2_Target(Clone)").gameObject.SetActive(true);
             //player1_target = GameObject.Find("Player1_Target(Clone)");
         }

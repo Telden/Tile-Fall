@@ -50,25 +50,25 @@ public class Player1Script : MonoBehaviour {
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y + 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
-                    Debug.Log("PLayer 1 Moved");
+                    //Debug.Log("PLayer 1 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.S) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y - 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
-                    Debug.Log("PLayer 1 Moved");
+                    //Debug.Log("PLayer 1 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.A) && Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x - 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
-                    Debug.Log("PLayer 1 Moved");
+                    //Debug.Log("PLayer 1 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.D) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x + 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
-                    Debug.Log("PLayer 1 Moved");
+                    //Debug.Log("PLayer 1 Moved");
                 }
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
@@ -92,10 +92,10 @@ public class Player1Script : MonoBehaviour {
 
     void createTarget()
     {
-        Debug.Log("Creating Target");
+        //Debug.Log("Creating Target");
         if(!turnController.GetComponent<TurnController>().target1Spawned)
         {
-            Debug.Log("Instantiating target");
+            //Debug.Log("Instantiating target");
             Instantiate(player1_target, player1_sprite.transform.position, Quaternion.identity);
             target_holder = GameObject.Find("Player1_Target(Clone)");
             turnController.GetComponent<TurnController>().target1Spawned = true;
