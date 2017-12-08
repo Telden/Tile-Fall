@@ -10,7 +10,8 @@ public class GridController : MonoBehaviour {
     GameObject [,] gridSquaresRight;
     public Vector3 [,] gridPositionsLeft;
     public Vector3 [,] gridPositionsRight;
-
+	float magicNumberWidth = 2.03f;
+	float magicNumberHeight = 1.31f;
     public bool isSpawnedLeft = false, isSpawnedRight = false;
 
 
@@ -28,26 +29,21 @@ public class GridController : MonoBehaviour {
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
             {
-                gridPositionsLeft[i, j] = new Vector3(i * 2.03f, j*1.31f, 0);
+				gridPositionsLeft[i, j] = new Vector3(i * magicNumberWidth, j*magicNumberHeight, 0);
                 gridSquaresLeft[i, j] = Instantiate(gridSquareLeft, gridPositionsLeft[i, j], Quaternion.identity);
             } 
-        Instantiate(divider, new Vector3(width * 2.03f, (height * 1.31f) / 2, 0), Quaternion.identity);
+		Instantiate(divider, new Vector3(width * magicNumberWidth, (height * magicNumberHeight) / 2, 0), Quaternion.identity);
         camera.transform.position = new Vector3(divider.transform.position.x - 1.02f, divider.transform.position.y-0.515f, -3f);
 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                gridPositionsRight[i, j] = new Vector3((i + width) * 2.03f, j * 1.31f, 0);
+				gridPositionsRight[i, j] = new Vector3((i + width) * magicNumberWidth, j * magicNumberHeight, 0);
                 gridSquaresRight[i, j] = Instantiate(gridSquareRight, gridPositionsRight[i, j], Quaternion.identity);
             }
         }
 
 
     }
-	
-	//// Update is called once per frame
-	//void Update () {
-		
-	//}
 }
