@@ -11,6 +11,12 @@ public class Player1Script : MonoBehaviour {
     public LayerMask open;
     public bool isDead = false;
 
+	int upCooldown = 20;
+	int downCooldown = 20;
+	int leftCooldown = 20;
+	int rightCooldown = 20;
+	int coolDownReset = 10;
+
     // Use this for initialization
     void Start () {
         hitboxUp = transform.Find("Up").gameObject;
@@ -46,42 +52,66 @@ public class Player1Script : MonoBehaviour {
         {
             if (turnController.GetComponent<TurnController>().player1Movement > 0)
             {
-                if (Input.GetKeyDown(KeyCode.W) && Physics2D.OverlapCircle(hitboxUp.transform.position, 0.4f, open))
+				if ((Input.GetKeyDown(KeyCode.W) || Input.GetAxis("xBox1 Vertical") == 1) && Physics2D.OverlapCircle(hitboxUp.transform.position, 0.4f, open) && upCooldown == 0)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y + 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
+					upCooldown = coolDownReset;
                     //Debug.Log("PLayer 1 Moved");
                 }
-                if (Input.GetKeyDown(KeyCode.S) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open))
+				else
+				{
+					if(upCooldown > 0)
+						upCooldown -=1;
+				}
+				if ((Input.GetKeyDown(KeyCode.S) || Input.GetAxis("xBox1 Vertical") == -1) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open) && downCooldown == 0)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y - 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
+					downCooldown = coolDownReset;
                     //Debug.Log("PLayer 1 Moved");
                 }
-                if (Input.GetKeyDown(KeyCode.A) && Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open))
+				else
+				{
+					if(downCooldown > 0)
+						downCooldown -=1;
+				}
+				if ((Input.GetKeyDown(KeyCode.A) || Input.GetAxis("xBox1 Horizontal") == -1 )&& Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open) && leftCooldown == 0)
                 {
                     transform.position = new Vector3(transform.position.x - 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
+					leftCooldown = coolDownReset;
                     //Debug.Log("PLayer 1 Moved");
                 }
-                if (Input.GetKeyDown(KeyCode.D) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open))
+				else
+				{
+					if(leftCooldown > 0)
+						leftCooldown -=1;
+				}
+				if ((Input.GetKeyDown(KeyCode.D) || Input.GetAxis("xBox1 Horizontal") == 1) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open) && rightCooldown == 0)
                 {
                     transform.position = new Vector3(transform.position.x + 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
+					rightCooldown = coolDownReset;
                     //Debug.Log("PLayer 1 Moved");
                 }
-                if (Input.GetKeyDown(KeyCode.Q))
+				else
+				{
+					if(rightCooldown > 0)
+						rightCooldown -=1;
+				}
+				if (Input.GetKeyDown(KeyCode.Q) || Input.GetButtonUp("xBox1 Stay"))
                 {
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.R))
+			if (Input.GetKeyDown(KeyCode.R) ||  Input.GetButtonUp("xBox1 Reset"))
             {
                 transform.position = new Vector3(player1_sprite.transform.position.x, player1_sprite.transform.position.y, player1_sprite.transform.position.z);
                 turnController.GetComponent<TurnController>().player1Movement = 3;
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && turnController.GetComponent<TurnController>().player1Movement == 0)
+			if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonUp("xBox1 Input")) && turnController.GetComponent<TurnController>().player1Movement == 0)
             {
                 turnController.GetComponent<TurnController>().player1Complete = true;
             }

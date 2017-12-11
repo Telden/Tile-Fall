@@ -51,7 +51,7 @@ public class Player2_shooting : MonoBehaviour {
                 transform.position = new Vector3(transform.position.x + 2.04f, transform.position.y, transform.position.z);
 
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.RightShift))
             {
                 movement = false;
                 turnController.GetComponent<TurnController>().target2Input = true;

@@ -43,25 +43,25 @@ public class Player2Script : MonoBehaviour
         {
             if (turnController.GetComponent<TurnController>().player2Movement > 0)
             {
-                if (Input.GetKeyDown(KeyCode.UpArrow) && Physics2D.OverlapCircle(hitboxUp.transform.position, 0.4f, open))
+				if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("xBox2 Vertical") == 1) && Physics2D.OverlapCircle(hitboxUp.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y + 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
                     //Debug.Log("PLayer 2 Moved");
                 }
-                if (Input.GetKeyDown(KeyCode.DownArrow) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open))
+				if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("xBox2 Vertical") == -1) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y - 1.31f, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
                     //Debug.Log("PLayer 2 Moved");
                 }
-                if (Input.GetKeyDown(KeyCode.LeftArrow) && Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open))
+				if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("xBox2 Horizontal") == -1) && Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x - 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
                     //Debug.Log("PLayer 2 Moved");
                 }
-                if (Input.GetKeyDown(KeyCode.RightArrow) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open))
+				if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("xBox2 Horizontal") == 1) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open))
                 {
                     transform.position = new Vector3(transform.position.x + 2.04f, transform.position.y, transform.position.z);
                     turnController.GetComponent<TurnController>().player2Movement -= 1;
