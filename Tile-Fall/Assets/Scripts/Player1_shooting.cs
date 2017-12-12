@@ -33,28 +33,51 @@ public class Player1_shooting : MonoBehaviour {
     {
         if (turnController.GetComponent<TurnController>().shooting && movement)
         {
-			if ((Input.GetKeyDown(KeyCode.W) || Input.GetAxis("xBox1 Vertical") == 1) && Physics2D.OverlapCircle(hitboxUp.transform.position, 0.4f, open))
+			if ((Input.GetKeyDown(KeyCode.W) || Input.GetAxis("xBox2 Vertical") == 1) && Physics2D.OverlapCircle(hitboxUp.transform.position, 0.4f, open) && upCooldown == 0)
             {
                transform.position = new Vector3(transform.position.x, transform.position.y + 1.31f, transform.position.z);
+				upCooldown = coolDownReset;
 
             }
-			if ((Input.GetKeyDown(KeyCode.S) || Input.GetAxis("xBox1 Vertical") == -1) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open))
+			else
+			{
+				if(upCooldown > 0)
+					upCooldown -= 1;
+			}
+			if ((Input.GetKeyDown(KeyCode.S) || Input.GetAxis("xBox2 Vertical") == -1) && Physics2D.OverlapCircle(hitboxDown.transform.position, 0.4f, open) && downCooldown == 0)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - 1.31f, transform.position.z);
+				downCooldown = coolDownReset;
 
             }
-			if ((Input.GetKeyDown(KeyCode.A) || Input.GetAxis("xBox1 Horizontal") == -1 ) && Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open))
+			else
+			{
+				if(downCooldown > 0)
+					downCooldown -= 1;
+			}
+			if ((Input.GetKeyDown(KeyCode.A) || Input.GetAxis("xBox2 Horizontal") == -1 ) && Physics2D.OverlapCircle(hitboxLeft.transform.position, 0.4f, open) && leftCooldown == 0)
             {
                 transform.position = new Vector3(transform.position.x - 2.04f, transform.position.y, transform.position.z);
+				leftCooldown = coolDownReset;
 
             }
-			if ((Input.GetKeyDown(KeyCode.D) || Input.GetAxis("xBox1 Horizontal") == 1) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open))
+			else
+			{
+				if(leftCooldown > 0)
+					leftCooldown -= 1;
+			}
+			if ((Input.GetKeyDown(KeyCode.D) || Input.GetAxis("xBox2 Horizontal") == 1) && Physics2D.OverlapCircle(hitboxRight.transform.position, 0.4f, open) && rightCooldown == 0)
             {
                 transform.position = new Vector3(transform.position.x + 2.04f, transform.position.y, transform.position.z);
-
+				rightCooldown = coolDownReset;
             }
+			else
+			{
+				if(rightCooldown > 0)
+					rightCooldown -= 1;
+			}
 
-            if(Input.GetKeyDown(KeyCode.LeftShift))
+			if(Input.GetKeyDown(KeyCode.RightShift) || Input.GetButtonUp("xBox2 Input"))
                 {
                 movement = false;
                 turnController.GetComponent<TurnController>().target1Input = true;

@@ -105,13 +105,13 @@ public class Player1Script : MonoBehaviour {
                     turnController.GetComponent<TurnController>().player1Movement -= 1;
                 }
             }
-			if (Input.GetKeyDown(KeyCode.R) ||  Input.GetButtonUp("xBox1 Reset"))
+			if (Input.GetKeyDown(KeyCode.R) || Input.GetButtonUp("xBox1 Reset"))
             {
                 transform.position = new Vector3(player1_sprite.transform.position.x, player1_sprite.transform.position.y, player1_sprite.transform.position.z);
                 turnController.GetComponent<TurnController>().player1Movement = 3;
             }
 
-			if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonUp("xBox1 Input")) && turnController.GetComponent<TurnController>().player1Movement == 0)
+			if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonUp("xBox2 Input") )&& turnController.GetComponent<TurnController>().player1Movement == 0)
             {
                 turnController.GetComponent<TurnController>().player1Complete = true;
             }
