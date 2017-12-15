@@ -11,7 +11,7 @@ public class UI_Script : MonoBehaviour {
     public Sprite left00, left01, left02, left03, right00, right01, right02, right03;
     int leftMove, rightMove;
 	public SpriteRenderer Controls;
-
+	float a = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -33,11 +33,15 @@ public class UI_Script : MonoBehaviour {
 	{
 		if(Input.GetButton("Controls"))
 		{
-			Controls.color = new Color(Controls.color.r, Controls.color.g, Controls.color.b, 1);
+			if(Controls.color.a < 1)
+				a += .1f;
+			Controls.color = new Color(Controls.color.r, Controls.color.g, Controls.color.b, a);
 		}
 		else
 		{
-			Controls.color = new Color(Controls.color.r, Controls.color.g, Controls.color.b, 0);
+			if(Controls.color.a > 0)
+				a -= .1f;
+			Controls.color = new Color(Controls.color.r, Controls.color.g, Controls.color.b, a);
 		}
 	}
 	void updateUI()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurnController : MonoBehaviour {
     public GameObject player1, player2, gridController, player1_sprite, player2_sprite;
+	public UI_Script mpUiScript;
     public bool movement = true;
     public bool shooting = false;
     public int player1Movement = 3, player2Movement = 3;
@@ -57,23 +58,20 @@ public class TurnController : MonoBehaviour {
         Debug.Log("Checking Win condition");
         if (GameObject.Find("Player1(Clone)").GetComponent<Player1Script>().isDead && GameObject.Find("Player2(Clone)").GetComponent<Player2Script>().isDead )
         {
-			GameObject.Find ("Canvas").GetComponent<UI_Script> ().draw.SetActive (true);
-			Debug.Log("Draw");
-            //Draw Implementation
+			mpUiScript.draw.SetActive (true);
+
         }
 
         else if (GameObject.Find("Player1(Clone)").GetComponent<Player1Script>().isDead)
         {
-			GameObject.Find ("Canvas").GetComponent<UI_Script> ().redWin.SetActive (true);
-            Debug.Log("Player 2 Wins");
-            //Win Screen for player 2
+			mpUiScript.redWin.SetActive (true);
+        
         }
 
         else if (GameObject.Find("Player2(Clone)").GetComponent<Player2Script>().isDead)
         {
-			GameObject.Find ("Canvas").GetComponent<UI_Script> ().blueWin.SetActive (true);
-            Debug.Log("PLayer 1 Wins");
-            //Win condition for player 1
+			mpUiScript.blueWin.SetActive (true);
+
         }
 
     }

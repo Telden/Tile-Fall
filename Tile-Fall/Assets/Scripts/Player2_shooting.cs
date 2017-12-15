@@ -87,10 +87,13 @@ public class Player2_shooting : MonoBehaviour {
 
     void CheckSquare()
     {
+		GameObject.Find("Player1_Sprite(Clone)").GetComponent<Animator>().SetBool("isFiring", true);
+		GameObject.Find("Player1_Sprite(Clone)").GetComponent<AudioSource>().Play();
         if (Physics2D.OverlapCircle(transform.position, 0.4f, player))
         {
             //Debug.Log("Killed PLayer");
             //Kill player 2
+			GameObject.Find("Player2_Sprite(Clone)").GetComponent<ResetPlayer2Anim>().playExplosion();
             GameObject.Find("Player2(Clone)").GetComponent<Player2Script>().isDead = true;
             turnController.GetComponent<TurnController>().player2Finished = true;
         }

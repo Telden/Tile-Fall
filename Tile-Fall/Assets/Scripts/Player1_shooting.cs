@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Player1_shooting : MonoBehaviour {
     GameObject hitboxUp, hitboxDown, hitboxLeft, hitboxRight, turnController;
     public LayerMask open, player;
@@ -86,10 +86,13 @@ public class Player1_shooting : MonoBehaviour {
     }
     void CheckSquare()
     {
+		GameObject.Find("Player2_Sprite(Clone)").GetComponent<Animator>().SetBool("isFiring", true);
+		GameObject.Find("Player2_Sprite(Clone)").GetComponent<AudioSource>().Play();
         if (Physics2D.OverlapCircle(transform.position, 0.4f, player))
         {
             //Debug.Log("Killed PLayer");
             //Kill player 1
+			GameObject.Find("Player1_Sprite(Clone)").GetComponent<ResetPlayer1Anim>().playExplosion();
             GameObject.Find("Player1(Clone)").GetComponent<Player1Script>().isDead = true;
             turnController.GetComponent<TurnController>().player1Finished = true;
         }

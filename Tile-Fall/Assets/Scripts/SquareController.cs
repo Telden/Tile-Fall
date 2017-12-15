@@ -37,24 +37,6 @@ public class SquareController : MonoBehaviour {
             Instantiate(player2, new Vector3(transform.position.x, transform.position.y, -2), Quaternion.identity);
             GridController.GetComponent<GridController>().isSpawnedRight = true;
         }
-        
-
-
-
-        //Debug.Log("Clicked");
-        //if (gameObject.tag == "Left" && !playerController1.GetComponent<Player1Script>().isSpawnedLeft)
-        //{
-        //    //Debug.Log("left");
-        //    Instantiate(player1, transform.position, Quaternion.identity);
-        //    playerController1.GetComponent<Player1Script>().isSpawnedLeft = true;
-        //}
-
-        //if (gameObject.tag == "Right" && !playerController1.GetComponent<Player1Script>().isSpawnedRight)
-        //{
-        //    //Debug.Log("left");
-        //    Instantiate(player2, transform.position, Quaternion.identity);
-        //    playerController1.GetComponent<Player1Script>().isSpawnedRight = true;
-        //}
     }
     
     public void swtichSprite ()

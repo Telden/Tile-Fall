@@ -111,7 +111,7 @@ public class Player1Script : MonoBehaviour {
                 turnController.GetComponent<TurnController>().player1Movement = 3;
             }
 
-			if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonUp("xBox2 Input") )&& turnController.GetComponent<TurnController>().player1Movement == 0)
+			if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonUp("xBox1 Input") )&& turnController.GetComponent<TurnController>().player1Movement == 0)
             {
                 turnController.GetComponent<TurnController>().player1Complete = true;
             }
