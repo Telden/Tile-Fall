@@ -8,8 +8,6 @@ public class SquareController : MonoBehaviour {
     public Sprite broken;
     SpriteRenderer sr;
     GameObject playerController1, GridController;
-    //bool isSpawnedLeft = false;
-    //bool isSpawnedRight = false;
     public bool passable = true;
 
     // Use this for initialization

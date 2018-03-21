@@ -2,7 +2,7 @@
 <doc>
   <members>
     <assembly>
-      <name>UnityEngine.VR</name>
+      <name>UnityEditor.UIAutomation</name>
     </assembly>
   </members>
 </doc>
